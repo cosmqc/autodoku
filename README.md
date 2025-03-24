@@ -1,6 +1,7 @@
 # Autodoku
 
 Autodoku is a Sudoku app with hint functionality, built with WASM, Rust, React, and Typescript.
+
 It uses the `sudoku` crate for generation and strategy, and `serde` for serialization (among others).
 
 ## Features
