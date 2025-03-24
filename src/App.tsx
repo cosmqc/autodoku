@@ -104,7 +104,6 @@ const App = () => {
     if (sudokuInstance) {
       let solved: number[][] = sudokuInstance.get_solved()
       if (JSON.stringify(solved) === JSON.stringify(board)) {
-        console.log('solved!!')
         triggerWin();
       }
     }
