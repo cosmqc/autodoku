@@ -42,13 +42,27 @@ const App = () => {
 
   const handleHint = () => {
     if (sudokuInstance) {
+      const validationErrors: boolean[][] = Array(9).fill(null).map(() => Array(9).fill(false));
+      const solvedGrid = sudokuInstance.get_solved();
+      let hasError : boolean = false;
+      for (let row = 0; row < 9; row++) {
+        for (let col = 0; col < 9; col++) {
+          const cellValue = board[row][col];
+          const isValid = cellValue === 0 || cellValue === solvedGrid[row][col];
+          if (!isValid) {
+            hasError = true
+            validationErrors[row][col] = true;
+          };
+        }
+      }
+      // If an error is on the board, light it up. That can be their hint
+      if (hasError) {
+        setErrors(validationErrors)
+        return;
+      }
+
       const hint = sudokuInstance.get_hint(board);
       let [row, col, value]: number[] = hint
-      // If the solver couldn't find a solution, there's an error on the board. Fix that first.
-      if (row === -1) {
-        handleValidate();
-        return
-      }
 
       const tempBoard = [...board]
       tempBoard[row][col] = value
