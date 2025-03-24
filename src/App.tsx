@@ -78,6 +78,11 @@ const App = () => {
     fireworksRef.current.waitStop();
   }
 
+  const triggerWin = () => {
+    setIsWinScreen(true);
+    toggleFireworks();
+  }
+
   React.useEffect(() => {
     // Wait for the WASM module to be loaded
     const loadWasm = async () => {
@@ -103,12 +108,7 @@ const App = () => {
         triggerWin();
       }
     }
-  }, [board]);
-
-  const triggerWin = () => {
-    setIsWinScreen(true);
-    toggleFireworks();
-  }
+  }, [board, sudokuInstance, triggerWin]);
 
   return (
     <div className="app"

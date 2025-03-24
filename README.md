@@ -1,17 +1,19 @@
 # Autodoku
 
-Autodoku is a Rust-based Sudoku app with built-in hint functionality.
-It uses the sudoku crate for generation and strategy, and serde for serialization (among others).
+Autodoku is a Sudoku app with hint functionality, built with WASM, Rust, React, and Typescript.
+It uses the `sudoku` crate for generation and strategy, and `serde` for serialization (among others).
 
 ## Features
 - Error highlighting
 - Related cell (row, column, house) highlighting
 - Hints
-- Win effects
+- Win effects (with sound!!)
 
 ## Building
 - If you haven't already, [install wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)
-- Navigate to wasm/sudoku-solver
+- Clone my repository (`git clone https://github.com/cosmqc/autodoku`)
+- Navigate to autodoku/wasm/sudoku-solver
 - Run `wasm-pack build --target web`
-- Navigate to the project root
+- Run `npm install`
 - Run `npm start`
+- If the project doesn't auto-open, navigate to http://localhost:3000
