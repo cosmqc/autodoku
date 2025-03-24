@@ -78,11 +78,6 @@ const App = () => {
     fireworksRef.current.waitStop();
   }
 
-  const triggerWin = () => {
-    setIsWinScreen(true);
-    toggleFireworks();
-  }
-
   React.useEffect(() => {
     // Wait for the WASM module to be loaded
     const loadWasm = async () => {
@@ -101,6 +96,11 @@ const App = () => {
   }, []);
 
   React.useEffect(() => {
+    const triggerWin = () => {
+      setIsWinScreen(true);
+      toggleFireworks();
+    }
+
     if (sudokuInstance) {
       let solved: number[][] = sudokuInstance.get_solved()
       if (JSON.stringify(solved) === JSON.stringify(board)) {
@@ -108,7 +108,7 @@ const App = () => {
         triggerWin();
       }
     }
-  }, [board, sudokuInstance, triggerWin]);
+  }, [board, sudokuInstance]);
 
   return (
     <div className="app"
